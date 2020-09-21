@@ -11,7 +11,6 @@ class UserIdentity extends CUserIdentity
 	const ERROR_USERNAME_NOT_MEMBER = 4;
 	const ERROR_GOOGLE_NOT_AUTHENTICATE = 5;
 	const ERROR_GOOGLE_NOT_ENABLED = 6;
-	const ERROR_USERNAME_NOT_PAYER = 7;
 
 	private $_id;
 	/**
@@ -88,43 +87,9 @@ class UserIdentity extends CUserIdentity
 				}
 				$emptysocial = explode('@',$record->email);
 
-				/*
-				*	VERIFICA SE IL SOCIO HA PAGATO LA QUOTA D'ISCRIZIONE
-				*/
-				$timestamp = time();
-				$criteria = new CDbCriteria();
-				$criteria->compare('id_user',$record->id_user, false);
-
-				$provider = Pagamenti::model()->Paid()->OrderByIDDesc()->findAll($criteria);
-				if ($provider === null){
-					//$expiration_membership = $timestamp;
-					$this->errorCode=self::ERROR_USERNAME_NOT_PAYER;
-					$save->WriteLog('wallet-tts','useridentity','authenticate','User not payer: '.$this->username);
-					return !$this->errorCode;
-				}else{
-					$provider = (array) $provider;
-					if (count($provider) == 0)
-						$expiration_membership = 1;
-					else
-						$expiration_membership = strtotime($provider[0]->data_scadenza);
-				}
-				// scadenza entro il 31 gennaio per provvedere all'iscrizione (se la data_scadenza
-				// è al 31 dicembre)
-				// temporaneamente posticipato al 28 febbraio
-				$expiration_membership += (31+28) *24*60*60;
-				if ($expiration_membership <= $timestamp){
-					$this->errorCode=self::ERROR_USERNAME_NOT_MEMBER;
-					$save->WriteLog('wallet-tts','useridentity','authenticate','User not member: '.$this->username);
-					return !$this->errorCode;
-				}
-
 				$save->WriteLog('wallet-tts','useridentity','authenticate','User '.$this->username. ' logged in.');
 
-				$institute = Institutes::model()->findByAttributes(['id_user'=>$record->id_user]);
-				if ($institute === null)
-					$id_institute = 0;
-				else
-					$id_institute = $institute->id_institute;
+				$id_institute = 0;
 
 				$this->setState('objUser', array(
 					'id_user' => $record->id_user,
