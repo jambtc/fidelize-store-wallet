@@ -98,11 +98,11 @@ class WalletController extends Controller
 		// solo in caso di commerciante
 		$warningmessage = null;
 
-		// verifico se è in scadenza
-		$deadline = WebApp::StatoPagamenti(Yii::app()->user->objUser['id_user'],true);
-		if ($deadline >= -31-28){
-			$warningmessage[] = $this->writeMessage('deadline', 28+31 - $deadline);
-		}
+		// // verifico se è in scadenza
+		// $deadline = WebApp::StatoPagamenti(Yii::app()->user->objUser['id_user'],true);
+		// if ($deadline >= -31-28){
+		// 	$warningmessage[] = $this->writeMessage('deadline', 28+31 - $deadline);
+		// }
 
 		$modelc=new Tokens('search');
 			$modelc->unsetAttributes();
