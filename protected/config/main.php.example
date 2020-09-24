@@ -1,18 +1,18 @@
 <?php
-$nomeApplicazione = 'Store Wallet';
-$shortName = 'Store Wallet';
+$nomeApplicazione = 'Fidelize Store Wallet';
+$shortName = 'Fidelize Store Wallet';
 
 //Associazione
-$nomeAssociazione = 'Associazione Napoli Blockchain';
-$logoApplicazione = '/css/images/bolt-logo.png';
-$logoHeader = '/css/images/bolt-header.png';
+$nomeAssociazione = 'txlab';
+$logoApplicazione = '/css/images/logo.png';
+$logoHeader = '/css/images/logo.png';
 
 $timeOutSeconds = 3600*24*30; // 1 mese
 
 //configurazione email
-$adminSiteweb = 'napoliblockchain.it';
-$adminEmail = 'info@napoliblockchain.it';
-$adminName = 'Napoli Blockchain ';
+$adminSiteweb = 'txlab.it';
+$adminEmail = 'info@txlab.it';
+$adminName = 'txlab ';
 
 
 //explorer btc ed eth
