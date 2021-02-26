@@ -82,9 +82,9 @@ return array(
 	  	'dryRun' => false,
 		),
 		//SSH LIBRARY
-		'phpseclib' => array(
-      'class' => 'ext.phpseclib.PhpSecLib'
-    ),
+	// 	'phpseclib' => array(
+    //   'class' => 'ext.phpseclib.PhpSecLib'
+    // ),
 
 
 		// MIE CLASSI
