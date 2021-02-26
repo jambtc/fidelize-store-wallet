@@ -4,6 +4,8 @@ Yii::import('libs.NaPacks.Settings');
 Yii::import('libs.ethereum.eth');
 Yii::import('libs.NaPacks.WebApp');
 Yii::import('libs.NaPacks.Logo');
+Yii::import('libs.NaPacks.SaveModels');
+Yii::import('libs.NaPacks.Save');
 
 class TokensController extends Controller
 {

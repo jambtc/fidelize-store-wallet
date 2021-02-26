@@ -35,26 +35,26 @@ if (!("NDEFReader" in window))
 			});
 
 
-			NFCscanButton.addEventListener("click", async () => {
-				console.log("User clicked scan button");
-
-				try {
-					const reader = new NDEFReader();
-					await reader.scan();
-					console.log("> Scan started");
-					reader.addEventListener("error", () => {
-				  		console.log("Argh! Cannot read data from the NFC tag. Try a different one?");
-					});
-					reader.addEventListener("reading", ({ message, serialNumber }) => {
-				  		console.log('> Serial Number: '+serialNumber);
-				  		console.log('> Records: '+message.records.length);
-						$('#WalletTokenForm_to').val(message);
-						// $('#scrollmodalNFC').modal('hide');
-					});
-				} catch (error) {
-					console.log("Argh! " + error);
-				}
-			});
+			// NFCscanButton.addEventListener("click", async () => {
+			// 	console.log("User clicked scan button");
+			//
+			// 	try {
+			// 		const reader = new NDEFReader();
+			// 		await reader.scan();
+			// 		console.log("> Scan started");
+			// 		reader.addEventListener("error", () => {
+			// 	  		console.log("Argh! Cannot read data from the NFC tag. Try a different one?");
+			// 		});
+			// 		reader.addEventListener("reading", ({ message, serialNumber }) => {
+			// 	  		console.log('> Serial Number: '+serialNumber);
+			// 	  		console.log('> Records: '+message.records.length);
+			// 			$('#WalletTokenForm_to').val(message);
+			// 			// $('#scrollmodalNFC').modal('hide');
+			// 		});
+			// 	} catch (error) {
+			// 		console.log("Argh! " + error);
+			// 	}
+			// });
 		}
 
 	}
