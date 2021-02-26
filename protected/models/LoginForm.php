@@ -108,7 +108,7 @@ class LoginForm extends CFormModel
 					break;
 
 				case UserIdentity::ERROR_USERNAME_NOT_MEMBER:
-					$this->addError('password',"L'iscrizione è scaduta. Provvedere al pagamento della quota associativa per il rinnovo.");
+					$this->addError('password',"L'utente non è abilitato all'utilizzo dell'applicazione.");
 					break;
 
 

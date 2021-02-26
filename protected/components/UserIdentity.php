@@ -48,6 +48,10 @@ class UserIdentity extends CUserIdentity
 		 	$this->errorCode=self::ERROR_USERNAME_NOT_ACTIVE;
 			$save->WriteLog('wallet-tts','useridentity','authenticate','User not active: '.$this->username);
 		}
+		else if($record->corporate == 0){
+			$this->errorCode=self::ERROR_USERNAME_NOT_MEMBER;
+			$save->WriteLog('wallet-tts','useridentity','authenticate','User not corporate: '.$this->username);
+		}
 		else
 		{
 			$valid = true;
